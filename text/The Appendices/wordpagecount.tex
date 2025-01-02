@@ -1,0 +1,41 @@
+\chapter{Word and Page Count}
+\section{Word count}
+
+%TC:ignore
+
+%TC:nobib
+%TC:group table 0 1
+%TC:group tabular 1 1
+
+\newcommand{\fullcount}[1]{%
+  \immediate\write18{texcount -merge -sum=1, 1, 1, 0, 0, 0, 0 -q -restricted #1.tex > #1.fullcount }%
+  \verbatiminput{#1.fullcount}%
+}
+
+% RJS: Below works like an spreadsheet for your word count, which, obviously, does not need including within your final production version of your thesis. 
+
+% QS: TeXCount functionality has now been added into RJS' below. 
+
+
+\fullcount{Oxford_Thesis} % 
+
+% The -4 is to correct the extra 4 words that it added to the word count.
+\STautoround{1}
+Overall\\
+\begin{center}
+    \begin{spreadtab}{{tabular}{lrccc}}
+\toprule
+          & @ Words    & @ Date & @ \% of 100  & @ \% of thesis \\ \hline
+@ Introduction    & 41     & @XX/YY& 100*b2/100 & 100*b2/b5\\
+@ Conclusions    & 6     & @XX/YY & 100*b3/100 & 100*b3/b5\\
+@ Appendix & 6 & @XX/YY & 100*b4/100 & 100*b4/b5\\
+@ Sum     & sum(b2:b4)    &       & sum(d2:d4)   & \\\bottomrule
+\end{spreadtab}
+\end{center}
+%QS: Once the counts emerge from TeXCount via whichever method you prefer (by commenting out sections and putting in numbers, or by adding up numbers from the above fullcount bits), and fill out the spreadsheet for ease. As TeXCount states that "Floating environments (or potentially floating environments) such as tables and figures are not counted as text, even if the cells of a table may contain text", text within environments must be manually counted.
+
+\section{Page count}
+
+Total page count: \pageref{LastPage}. %CAMELGRAPH: The Part II requires this to be below 100 pages, excluding title page, acknowledgements, table of contents, appendices, and references. 
+
+%TC:endignore

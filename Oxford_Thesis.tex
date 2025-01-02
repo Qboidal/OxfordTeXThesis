@@ -1,0 +1,305 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Use this template to produce a standard thesis that meets the Oxford University requirements for DPhil submission
+% QS: Now updated for the 2024/2025 academic year to meet the requirements for the Oxford University Department of Materials requirements for a Part II thesis submission.
+%
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+% Modified by Robin Scales (robin@scales.me), 2023
+% Modified by Qianyi Sun (inbox4sun@gmail.com), 2025
+%
+% This version Copyright (c) 2025 Qianyi Sun
+%
+% Broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+
+
+% I've (John) tried to comment this file extensively, so read through it to see how to use the various options.  Remember that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of the lines you don't want.
+
+% Now a decade on from JEM, I've (Q) tried to continue the trend of commenting throughout in order to future-proof this template and to teach some TeX to those who may be less experienced. JEM's above note about % commenting out text is true for everything except when the text reads %TC:, which are TeXCount commands, so leave them be! Look for five percent symbols to jump from one major portion of the document to another. 
+
+
+%%%%% CHOOSE PAGE LAYOUT
+% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+
+% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+% \documentclass[a4paper,twoside]{OxfordTexThesis}
+
+% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+\documentclass[a4paper]{OxfordTeXThesis} %CAMELGRAPH: Part II theses use one-sided binding.
+% QS: Add [hidelinks] if you don't want boxes for the production version.
+% This one will format for PDF output (ie equal margins, no extra blank pages):
+% \documentclass[a4paper,nobind, 12pt]{OxfordTeXThesis} 
+
+% \renewcommand{\numberingstyle}{\thispagestyle{fancy}}
+% QS: Use this to have every page numbered.
+% CAMELGRAPH: The Part II requires all pages to besequentially numbered.
+
+\geometry{total={170mm,257mm},
+ left=30mm,
+ right=30mm,
+ top=25mm,
+ bottom=25mm, 
+ includehead, includefoot,
+heightrounded}
+% QS: Use this to have specific geometry if you want!
+
+
+%%%%% SELECT YOUR DRAFT OPTIONS
+% Three options going on here; use in any combination.  But remember to turn the first two off before  generating a PDF to send to the printer!
+
+% To include a Draft watermark, comment out the below.
+% \backgroundsetup{contents={}} 
+
+% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+\correctionstrue
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% The science-type option: numerical in-text citation with references in order of appearance.
+\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=true, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{References}
+
+% The humanities-type option: author-year in-text citation with an alphabetical works cited.
+%\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+%\newcommand*{\bibtitle}{Works Cited}
+
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+\addbibresource{references.bib}
+
+%%%%% GLOSSARY (AND ABBREVIATIONS) SETUP
+\usepackage[style=alttree,nonumberlist, toc, acronym]{glossaries-extra}
+\makenoidxglossaries % QS: If not using Overleaf, to increase speed, this can read "\makeglossaries" instead, and "\printglossary" below. In other compilers, glossaries package requires two compiles to work, unless "[automake]" is an option in the package. 
+\loadglsentries{text/The Frontmatter/acronyms and abbreviations}
+\loadglsentries{text/The Frontmatter/glossary}
+
+
+
+% Uncomment this if you want equation numbers per section (e.g. 2.3.12), instead of per chapter e.g. (2.18):
+\numberwithin{equation}{subsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \makeatletter
+% \renewcommand{\@ac}[1]{%
+%   \ifAC@dua
+%      \ifAC@starred\acl*{#1}\AC@reset{#1}\else\acl{#1}\fi%
+%   \else
+%      \expandafter\ifx\csname ac@#1\endcsname\AC@used%
+%      \ifAC@starred\acs*{#1}\AC@reset{#1}\else\acs{#1}\fi%
+%    \else
+%      \ifAC@starred\acf*{#1}\AC@reset{#1}\else\acf{#1}\fi%
+%    \fi
+%   \fi}
+% \makeatother
+
+
+
+%%%%% THESIS / TITLE PAGE INFORMATION
+
+% Everybody needs to complete the following:
+\title{Oxford Thesis Template Example}
+\author{FIRST LAST}
+\college{XXX College}
+
+% Master's candidates who require a title page with candidate number and word count must also un-comment and complete the following three lines:
+% \masterssubmissiontrue
+% \candidateno{933516}
+% \wordcount{41,917}
+% CAMELGRAPH: Not necessary for the Part II. 
+
+% Uncomment the following line if your degree also includes exams (e.g. most masters): 
+% \renewcommand{\submittedtext}{Submitted in partial completion of the} 
+% \renewcommand{\submittedtext}{{A thesis submitted to the Honour School of}} % QS: or this one!
+%Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils. QS: convention on this front has now changed).
+\degree{Something or Other}
+% Term and year of submission, or date if your board requires (e.g. most masters)
+\degreedate{Trinity term, 2025}
+% Titles and names of supervisors.
+\supervisors{Supervisor A and Supervisor B}
+
+
+%%%%% YOUR OWN PERSONAL MACROS
+
+% This is a good place to dump your own LaTeX macros as they come up.
+% To make text superscripts shortcuts
+\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+\newcommand{\nd}{\textsuperscript{nd}}
+\renewcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
+
+\DeclareSIUnit\bar{bar} % QS: from the siunitx package
+\DeclareSIUnit\mrad{mrad}
+\DeclareSIUnit{\wtpercent}{wt\%}
+
+
+\newcommand{\cmark}{\ding{51}} % RJS: I used this package to give me ticks and crosses for tables. http://ctan.org/pkg/pifont
+\newcommand{\xmark}{\ding{55}} %
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+
+
+
+%CAMELGRAPH: The Part II word count includes the whole document from the table of contents to the references, not including the Project Management Forms. 
+
+
+%%%%% CHOOSE YOUR LINE SPACING HERE
+
+% This is the official option.  Use it for your submission copy and library copy:
+\setlength{\textbaselineskip}{22pt plus2pt} %CAMELGRAPH: The Part II requires double line-spaced with at least 11pt text, so...
+% \doublespacing % QS: this can be added in if you'd like less tinkering.
+
+% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
+%\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+\setlength{\frontmatterbaselineskip}{22pt plus2pt} %CAMELGRAPH: The Part II requires double line-spaced with at least 11pt text. 
+
+% Leave this line alone; it gets things started for the real document.
+\setlength{\baselineskip}{\textbaselineskip}
+
+% \usepackage{parskip} % RJS: Comment this out to remove the need to use \newline function
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% You have two choices.  First, how far down are sections numbered?  (Below that, they're named but don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have to match: you can have numbered sections that don't show up in the ToC, or unnumbered sections that do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
+
+% The level that gets a number:
+\setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+\setcounter{tocdepth}{2}
+% QS: the level that shows up in the miniToCs:
+\setcounter{minitocdepth}{2}
+
+
+%%%%% ABSTRACT SEPARATE
+% This is used to create the separate, one-page abstract that you are required to hand into the Exam Schools (QS: only true for some degrees).  You can comment it out to generate a PDF for printing or whatnot.
+% \begin{abstractseparate}
+% \input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
+% \end{abstractseparate}
+
+
+% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is inkeeping with most typesetting conventions.
+
+\begin{romanpages} %CAMELGRAPH: The Part II requires every page to be numbered sequentially, so this will be deactivated. 
+% CAMELGRAPH: The above means that the OxfordTeXThesis.cls must also be edited to have the titlepage, absract, and acknowledgements into the 'fancy' pagestyle, not empty. 
+
+%\def\crest{{\includegraphics[width=0.1\textwidth]{figures/sample/laser.png}}} % QS: Put your own image in here if you don't want the standard belted crest. 
+
+%TC:ignore % QS: This tells TeXCount to not count words from here until the next endignore. 
+
+% Title page is created here
+\maketitle
+
+%%%%% DEDICATION -- If you'd like one, un-comment the following.
+% \begin{dedication}
+% This thesis is dedicated to\\
+% my friends \& family\\
+% for supporting me through these years\\
+% \end{dedication}
+
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+%CAMELGRAPH: The Part II word count does inclue the abstract, so add in an endignore and ignore around the abstract. 
+\begin{abstract}
+	\input{text/The Frontmatter/abstract}
+\end{abstract}
+%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+\begin{acknowledgements}
+ 	\input{text/The Frontmatter/acknowledgements}
+\end{acknowledgements}
+
+%%%%% MINI TABLES
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
+% next two lines if you want a per-chapter list of figures or tables.
+\dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+\flushbottom
+
+% This is where the whole-document ToC appears:
+\tableofcontents
+
+%TC:endignore % QS: This tells TeXCount to start the word count again after the Table of Contents. Add extra sets of ignore and endignore to include and exclude portions from here on.
+%CAMELGRAPH: The Part II word count excludes the title page, acknowledgements, and table of contents.
+
+% \listoffigures
+% \mtcaddchapter
+% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
+
+% Uncomment to generate a list of tables:
+% \listoftables
+% \mtcaddchapter
+
+
+%%%%% LIST OF ABBREVIATIONS
+% This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is formatted.  The template can handle any kind of list though, so this might be a good place for a glossary, etc.
+%\include{text/The Frontmatter/abbreviations}
+
+
+\renewcommand{\glossarypreamble}{\glsfindwidesttoplevelname[\currentglossary]}% This finds the widest 'glossary' entry and scales automatically scales the 
+\printnoidxglossary[title=Abbreviations, toctitle=Abbreviations, type=acronym]
+
+\renewcommand{\glossarypreamble}{\glsfindwidesttoplevelname[\currentglossary]}
+\printnoidxglossary[title=Glossary, toctitle=Glossary, type=main] % QS: Include this line if you would like to include a glossary. 
+
+
+% The Roman pages, like the Roman Empire, must come to its inevitable close.
+\end{romanpages}%CAMELGRAPH: The Part II requires every page to be numbered sequentially, so this will be deactivated. 
+
+
+%%%%% CHAPTERS
+% Add or remove any chapters you'd like here, by file name (excluding '.tex'):
+
+\include{text/The Mainmatter/ch-01-Introduction}
+\include{text/The Mainmatter/ch-00-Conclusions}
+
+%%%%% APPENDICES 
+
+% Starts lettered appendices, adds a heading in table of contents, and adds a page that just says "Appendices" to signal the end of your main text.
+
+% Add or remove any appendices you'd like here:
+\startappendices
+\include{text/The Appendices/appendix1}
+\include{text/The Appendices/wordpagecount}
+
+\clearpage
+
+
+
+%%%%% REFERENCES
+%TC:ignore % QS: Often the references are not counted in a word count. 
+%CAMELGRAPH: The Part II word count ignores references.
+
+% JEM: Quote for the top of references (just like a chapter quote if you're using them).  
+% \begin{savequote}[8cm]
+% The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
+%   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
+% \end{savequote}
+
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+
+\renewbibmacro*{urldate}{
+(retrieved \printfield{urlday}/\printfield{urlmonth}/\printfield{urlyear})
+} % QS: Automates URL date text for citations, with references necessarily being in 'YYYY-MM-DD' format. 
+
+{\renewcommand*\MakeUppercase[1]{#1}%
+\printbibliography[heading=bibintoc,title={\bibtitle}]}
+
+%TC:endignore
+\end{document}

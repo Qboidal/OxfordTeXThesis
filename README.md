@@ -21,6 +21,8 @@ Having been blessed by this template during the writing of my Part II thesis, I 
 
 *Glossary and Abbreviations* Building on the method by JEM and RJS, which focussed on abbreviations and acronyms using custom-built formatting, using the [glossaries](https://www.ctan.org/pkg/glossaries), both a glossary and acronyms can be supported, while preserving the previous method that used the [acronym](https://www.ctan.org/pkg/acronym) package. 
 
+*Peace of mind* A number of warnings that are not detrimental to compiling, have been silences using the [silence](https://ctan.org/pkg/silence?lang=en) package. This is particularly useful when some packages that are required by the .cls document still use legacy packages (usually packages that are included in newer implementations of LaTeX).
+
 Enjoy and happy thesis writing! 
 Q.
 

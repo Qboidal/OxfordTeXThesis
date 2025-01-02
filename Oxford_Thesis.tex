@@ -37,14 +37,14 @@
 % QS: Use this to have every page numbered.
 % CAMELGRAPH: The Part II requires all pages to besequentially numbered.
 
-\geometry{total={170mm,257mm},
- left=30mm,
- right=30mm,
- top=25mm,
- bottom=25mm, 
- includehead, includefoot,
-heightrounded}
-% QS: Use this to have specific geometry if you want!
+% \geometry{total={170mm,257mm},
+%  left=30mm,
+%  right=30mm,
+%  top=25mm,
+%  bottom=25mm, 
+%  includehead, includefoot,
+% heightrounded}
+% QS: Use this to have specific geometry if you want! LaTeX will likely tell you there is overspefication in both the 'h' and 'v' directions but don't worry, the above specification will win. 
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
@@ -148,6 +148,9 @@ heightrounded}
 
 \newcommand{\cmark}{\ding{51}} % RJS: I used this package to give me ticks and crosses for tables. http://ctan.org/pkg/pifont
 \newcommand{\xmark}{\ding{55}} %
+
+%\WarningsOff[package] % QS: this silences warnings relating to a package. 
+\WarningsOff[package]
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}

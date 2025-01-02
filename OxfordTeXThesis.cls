@@ -203,10 +203,11 @@
 \WarningFilter*{latex}{Text page \thepage\space contains only floats}
 %%     Turns off the underfill notifications
 \hbadness=99999  % or any number >=10000
+\WarningsOff[everypage] % QS: This turns off the everypage warning, which is found in the background package. 
 
 \RequirePackage{chemformula} % Used for doing chemical formulae, could also use mhchem
 
-
+ \setlength {\marginparwidth }{2cm} % QS: allows todonotes to fit properly.
 \RequirePackage[colorinlistoftodos]{todonotes} % Adds inline or margin comments to your PDF. From https://www.overleaf.com/blog/619-tip-of-the-week-add-inline-or-margin-comments-to-your-pdf. Example \todo[size=\scriptsize, color=red!40]{Original thesis said do not reprint.}
 
 %New packages from QS
@@ -217,8 +218,6 @@
 \RequirePackage{lastpage} % Gives the number of pages.
 \RequirePackage{verbatim} % Allows commands to be displayed verbatim in TeX
 \RequirePackage{fancyvrb} % Makes the above look pretty. 
-
-
 
 \RequirePackage[colorlinks=false,pdfpagelabels]{hyperref} 
 	% for linking between references, figures, TOC, etc in the pdf document, RJS: https://www.overleaf.com/learn/latex/Hyperlinks. % QS: many packages must come before hyperref https://latexguide.org/book-examples/hyperref/.

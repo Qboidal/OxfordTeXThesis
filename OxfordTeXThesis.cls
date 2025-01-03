@@ -49,8 +49,7 @@
 %
 % DECLARATIONS
 %
-% These macros are used to declare arguments needed for the
-% construction of the title page and other preamble.
+% These macros are used to declare arguments needed for the construction of the title page and other preamble.
 
 % The year and term the degree will be officially conferred
 \def\degreedate#1{\gdef\@degreedate{#1}}
@@ -241,8 +240,7 @@
 
 \newcommand{\numberingstyle}{\thispagestyle{empty}} % QS: means \thispagestyle{empty} doesn't need to be called each time. 
 
-% This macro define an environment for front matter that is always 
-% single column even in a double-column document.
+% This macro define an environment for front matter that is always single column even in a double-column document.
 
 \newenvironment{alwayssingle}{%
        \@restonecolfalse
@@ -303,8 +301,7 @@
 
 % DEDICATION
 %
-% The dedication environment makes sure the dedication gets its
-% own page and is set out in verse format.
+% The dedication environment makes sure the dedication gets its own page and is set out in verse format.
 
 \newenvironment{dedication}
 {\begin{alwayssingle}
@@ -315,10 +312,7 @@
 
 % ACKNOWLEDGEMENTS
 %
-% The acknowledgements environment puts a large, bold, centered 
-% "Acknowledgements" label at the top of the page. The acknowledgements
-% themselves appear in a quote environment, i.e. tabbed in at both sides, and
-% on its own page.
+% The acknowledgements environment puts a large, bold, centered "Acknowledgements" label at the top of the page. The acknowledgements themselves appear in a quote environment, i.e. tabbed in at both sides, and on its own page.
 
 \newenvironment{acknowledgements}%
 {   \begin{alwayssingle}\chapter*{Acknowledgements}

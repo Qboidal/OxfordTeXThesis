@@ -467,7 +467,7 @@
 \RequirePackage{lmodern}
 \RequirePackage[LGR,TS1,T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[greek,english]{babel} % ,latin
+\RequirePackage[british]{babel} % QS: Feel free to add greek, latin, or 'american'
 \RequirePackage{csquotes}
 \hyphenpenalty=500
 \def\longs{{\fontencoding{TS1}\selectfont s}}

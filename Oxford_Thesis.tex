@@ -152,6 +152,8 @@
 %\WarningsOff[package] % QS: this silences warnings relating to a package. 
 \WarningsOff[package]
 
+\DeclareGraphicsExtensions{.png, .pdf} % https://www.overleaf.com/learn/latex/Inserting_Images. QS: this allows TeX to prefer one file type over another while compiling when graphics without a file extension are included, e.g. if two files called Image.png and Image.pdf exist in the same folder, and \includegraphic{Image} is called and \DeclareGraphicsExtensions{.png, .pdf} is called, the .png will be loaded, not the .pdf. This makes compiling faster when drafing, and, hence, .pdf should be ahead of .png when producing the document. 
+
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
 

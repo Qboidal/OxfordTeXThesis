@@ -183,7 +183,7 @@
 
 \RequirePackage[inkscapelatex=false]{svg} % Allow for SVGs to be used which is very useful in conjunction with Inkscape. https://medium.com/@aaron_imn/a-quick-guide-to-use-scalable-vector-graphics-svg-on-overleaf-ca69448f7177. Useful as Scalable Vector Graphics & Inkscape is very useful for crisp figures you can make export as in MATLAB and make your own figures in Inkscape and edit them in there.
 
-\DeclareGraphicsExtensions{.png, .pdf} % https://www.overleaf.com/learn/latex/Inserting_Images. QS: this allows TeX to prefer one file type over another while compiling when graphics without a file extension are included, e.g. if two files called Image.png and Image.pdf exist in the same folder, and \includegraphic{Image} is called, with \DeclareGraphicsExtensions{.png, .pdf} is called, the .png will be loaded, not the .pdf. This makes compiling faster when drafing, and, hence, .pdf should be ahead of .png when producing the document. 
+
 
 \RequirePackage{dirtytalk} % Nice Quotation Marks. I use \say{This is the quote}, and it does nicely formatted quotation marks for it, which otherwise doesn't look as good as the standard "".
 

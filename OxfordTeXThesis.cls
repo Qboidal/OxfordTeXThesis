@@ -171,8 +171,13 @@
 	% To format the bibliography	
 
 
-% RJS PACKAGES
+%--------------------------------------------------------%
+%--------------------- RJS Packages ---------------------%
+
+% The following packages are those that I (Robin) found useful for writing and working on my DPhil thesis.
+
 \RequirePackage{siunitx} % Good units
+% DOCUMENTATION: https://texdoc.org/serve/siunitx/0
 
 \RequirePackage{adjustbox} % QS: allows changing the size of floats
 \RequirePackage{caption} % See https://ctan.org/pkg/caption?lang=en
@@ -187,16 +192,15 @@
 
 \RequirePackage{dirtytalk} % Nice Quotation Marks. I use \say{This is the quote}, and it does nicely formatted quotation marks for it, which otherwise doesn't look as good as the standard "".
 
-\RequirePackage{pifont}% Extra fonts. 
-
-\RequirePackage{listings}% Extra colours for highlighting https://www.overleaf.com/learn/latex/Code_listing
-\RequirePackage{color, colortbl}
-\definecolor{LightCyan}{rgb}{0.88,1,1}
+\RequirePackage{pifont}% Extra fonts.
+\newcommand{\cmark}{\ding{51}} % check mark
+\newcommand{\xmark}{\ding{55}} % cross mark
 
 \RequirePackage{spreadtab} % Spreadsheet functionality. https://tex.stackexchange.com/questions/3851/how-can-i-automatically-calculate-sums-in-a-latex-table
-\RequirePackage{pgf-pie}
 
 \RequirePackage{pdflscape} % Makes whole page landscape which is really helpful with big wide figures
+
+\RequirePackage{makecell} % allows one to have multiple row cells in a table
 
 \RequirePackage{silence} % Below will turn off the annoying warning about a page only being floats.
 \WarningFilter*{latex}{Text page \thepage\space contains only floats}
@@ -208,6 +212,13 @@
 
  \setlength {\marginparwidth }{2cm} % QS: allows todonotes to fit properly.
 \RequirePackage[colorinlistoftodos]{todonotes} % Adds inline or margin comments to your PDF. From https://www.overleaf.com/blog/619-tip-of-the-week-add-inline-or-margin-comments-to-your-pdf. Example \todo[size=\scriptsize, color=red!40]{Original thesis said do not reprint.}
+
+\RequirePackage{pgf-pie} % Allows you to generate pie charts within LaTeX but I preferred using MATLAB or other software.
+
+\RequirePackage{listings} % Extra colours for code highlighting  https://www.overleaf.com/learn/latex/Code_listing
+
+\RequirePackage{color, colortbl} % Colouring in column tables
+% \definecolor{LightCyan}{rgb}{0.88,1,1}
 
 %New packages from QS
 \RequirePackage{background} % Allows text to appear in the background, used for its 'Draft' watermark.
@@ -225,10 +236,13 @@
 	\setcounter{minitocdepth}{2} 
 	% Generates mini tables of contents per chapter
 
+% !NOTE MUST BE LOADED AFTER hyperref! %
 \RequirePackage{cleveref} % RJS: Clever Hyperlink Referencing. Makes it automatically add in "Chapter 3", "Table 2", "Figure 5a" depending on the environment that the reference label is used with. It is essential for making a thesis nicely referenced.
 
 % QS: Both the glossaries-extra and geometry packages are called after hyperref.
-    
+
+%------------------- RJS Packages END -------------------% 
+%--------------------------------------------------------%
 	
 % JEM: The following fixes minitoc to not be multiple-spaced.
 \let\oldmtc@verse\mtc@verse

@@ -1,0 +1,165 @@
+\chapter{How To Use This Template \& \LaTeX}
+\label{ch: Examples}
+
+\adjustmtc
+\minitoc
+
+Firstly, many thanks to \textit{Q} for making my (Robin) version of the template more concise.\\
+All of \LaTeX's useful packages that I and others have found are located with \verb|OxfordTexThesis.cls| within the \say{RJS Packages} block of lines. Below will outline some examples of what they are and how they can be very useful.
+What I will do is have the outputted of the code shown followed by what was written in the \LaTeX{} script using (\verb|this|) format.\\\\
+If you are on Overleaf with this template, you can double-click on any of the features in this chapter, and it should bring you to the \verb|ch-02-Examples.tex| file and the location where you double-clicked. This is a way to learn how to use \LaTeX{} alongside lots of good tutorials online.
+
+\section{Drafting}
+Q has nicely added in a clear \say{Draft} watermark over the document to make it clear that the document is a draft.
+\textcolor{blue}{However, it may interact with pdf editors when you or your supervisor wants to highlight text. Additionally, it can be interacted with in Overleaf when double-clicked.}
+To turn it off, see the following in \verb|Oxford_Thesis.tex| file.
+\begin{verbatim}
+% To include a "Draft" watermark, comment below.
+% \backgroundsetup{contents={}}    
+\end{verbatim}
+John McManigle's version of the Thesis Template, which you can find on GitHub, has a simple draft and date at the bottom of the page but is then less obvious.
+
+\section{Figures}
+\subsection{subcaption}
+The \texttt{subcaption} package allows you to have one figure, like \cref{fig: subfig example}, with multiple subfigures. Each one can have its own caption and its own label so that you can cross-reference a specific one. So you can reference the bitmap figure (\cref{fig: subfig bitmap}) and vector figure (\cref{fig: subfig vector}) separately from each other and the main figure.
+One of the \textbf{major benefits} of it is that rather than creating complex figures in PowerPoint or Inkscape, you can make them within \LaTeX{} and quickly change elements within it.
+
+\begin{figure}[!ht]
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figures/sample/512px-Bitmap_VS_SVG - a.png}
+         \caption{Bitmap}
+         \label{fig: subfig bitmap}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figures/sample/512px-Bitmap_VS_SVG - b.png}
+         \caption{Vector}
+         \label{fig: subfig vector}
+     \end{subfigure}
+        \caption{Example of subfigure package. Yug, modifications by Cfaerber et al., CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons.}
+        \label{fig: subfig example}
+\end{figure}
+
+\subsection{inkscapelatex}
+
+As hinted in \cref{fig: subfig example}, vector graphics can be very useful when it comes to plots, diagrams, or anything that is not a photograph/micrograph, so that the image remains \say{crisp} no matter the displayed view.
+If you increase the zoom in \cref{fig: svg example} it will always remain crisp as it is an \say{svg} image file. In contrast, the images in \cref{fig: subfig example} are \say{png} files and so are raster type images, so increasing the magnification it will begin to pixelate.
+
+\begin{figure}[!ht]
+    \centering
+    \includesvg[width=0.9\textwidth]{figures/sample/Bitmap_VS_SVG.svg}
+    \caption{Example of scalable vector graphics (\textit{svg}) image files being displayed in \LaTeX{} using the \texttt{inkscapelatex} package. Yug, modifications by Cfaerber et al., CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons.}
+    \label{fig: svg example}
+\end{figure}
+
+MATLAB, Python, and I believe PowerPoint can all save images as \textit{svg} files which can then be directly used in \LaTeX{} using \verb|\includesvg[]{}|.
+
+\textbf{Importantly}, svgs are the native file format for Inkscape (download \href{https://inkscape.org/}{here}) which is a vector image editing software. I think this is more powerful for the following reasons:
+\begin{enumerate}
+    \item Free software used by many people with loads of tutorials and forum posts online. 
+    \item You can open raster images (e.g. micrographs) and add in annotations with layers over it, then export them as pngs are jpgs. So, you can look through folders of images in a thesis, see the preview for that figure, go back in, edit the annotation, and make quick changes for your supervisor.
+    \item Sometimes you can edit the text in saved MATLAB or Python SVG figure files. Or make another changes like removing the background if you want to do that later.
+    \item The layers and organisation of Inkscape is really good in comparison to PowerPoint.
+    \item Making diagrams is the same or easier as it is PowerPoint.
+\end{enumerate}
+
+\clearpage
+\begin{landscape}
+\subsection{pdflscape \& makecell}
+\texttt{pdflscape} is useful for when you sometimes need a horizontal page for especially wide figures or tables.\\\\
+\texttt{makecell} is great for adding in multiple rows into the same cell. This \href{https://tex.stackexchange.com/questions/410670/how-to-vertically-and-left-align-a-cell-with-makecell}{forum post} is useful for formatting it.
+
+\begin{table}[!ht]
+    \centering
+    \caption{Example table with the formatting which I like.}
+    \label{tab:my_label}
+    \begin{tabular}{lcrcccc}
+    \toprule
+        Left Aligned Column 1 & Central Aligned Column 2 & Right Aligned Column 3 & Column 4 & Column 5 & Column 6 & Col 7\\
+    \midrule
+        Reference \cite{whitehead1927principia} & 1 & g & \makecell{makecell is \\ useful for\\ multiple rows} &  &  & \\
+        b & 2 & h & 7 &  &  & \\
+        c & 3 & i & 8 &  &  & \\
+        d & 4 & j & 9 &  &  & \\
+        e & 5 & k & 10 &  &  & \\
+        f & 6 & l & $y=x^2$ &  &  & \\
+     \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{landscape}
+\clearpage
+
+\subsection{pgf-pie}
+\texttt{pgf-pie} allows you to generate pie charts within the document itself.
+
+\subsection{placeins}
+\texttt{placeins} was useful for me to enforce spaces between floats (e.g. figures) and text. \LaTeX{} tries to be clever and maximise the efficiency of the text. However, that sometimes means that the text and its related figure are too far apart, or another section begins awkwardly. Hence, the \verb|\FloatBarrier| command stops text from occurring before that float where that barrier is placed.
+This \href{www.reddit.com/r/LaTeX/comments/u7llg5/how_to_keep_figure_within_a_section/}{Reddit post} is where I got it from initially.\\
+\textbf{Similarly}, \verb|\clearpage| as mentioned in that post creates a page break and is even used in this chapter.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Text}
+\subsection{Acronyms}
+\textcolor{red}{This subsection is in development! This section will explain how to use acronyms so that you always make sure that you have already defined an acronym. It makes sure that the first instance in the document is written in full and then abbreviated later in the document.}
+\subsection{cleverref}
+\texttt{cleverref} is essentially clever hyperlink referencing. In \LaTeX{} the command \verb|\ref{}| only puts in the ID of the label it is cross-referencing. For example, using the above figure with \verb|\label{fig: svg example}|
+\begin{itemize}[noitemsep]
+    \item Default \verb|\ref{fig: svg example}| command $\rightarrow$ "\ref{fig: svg example}"
+    \item Cleverref \verb|\cref{fig: svg example}| $\rightarrow$ "\cref{fig: svg example}"
+    \item Cleverref \verb|\Cref{fig: svg example}| $\rightarrow$ "\Cref{fig: svg example}"
+\end{itemize}
+Hence, it automatically identifies the environment and adds the relevant description before it like "\textbf{Chapter} 3", "\textbf{Table} 2", "\textbf{Figure} 5a", depending on the environment. This saves time and mistakes.
+
+\subsection{chemformula}
+\texttt{chemformula} is useful for chemical formulas (surprise, surprise). In \LaTeX{} to do subscripts and superscripts, you often have to access \texttt{math mode}, which then formats the element letters wrong, as shown here with $H_{2}O_{(l)}$ (\verb|$H_{2}O_{(l)}$|).\\
+However, we can use format it much nicer with \ch{H2O_{(l)}} (\verb|\ch{H2O_{(l)}}|).\\
+This becomes especially useful when it comes to more complicated chemical equations like \ch{Cr2O3} (\verb|\ch{Cr2O3}|) and \ch{C6H12O6} (\verb|\ch{C6H12O6}|).
+There are more features I believe that are in the \href{https://ctan.org/pkg/chemformula?lang=en}{documentation}.
+
+
+\subsection{siunitx}
+Often, you want to use units, either stating something like:
+\begin{itemize}[noitemsep]
+    \item \si{\W\m^{-2}} (\verb|\si{\W\m^{-2}}|)
+    \item \qty{20}{\celsius} (\verb|\qty{20}{\celsius}|)
+    \item \qtyrange{500}{1300}{\kHz} (\verb|\qtyrange{500}{1300}{\kHz}|)
+\end{itemize}
+Note how it automatically gives a space between the number and the unit, which is the correct way to do it.
+You also have complicated numbers that would be a pain to write out in \texttt{math mode} such as \num{1.1d5} (\verb|\num{1.1d5}|).
+You can also define your own units so that you can write them out quickly like \say{mbar}, which is not in the package but useful to have on hand.\\
+
+There are so many options with \texttt{siunitx} that I think it is worth looking at the \href{https://texdoc.org/serve/siunitx/0}{documentation} page to get inspired! 
+
+\subsection{spreadtab}
+\texttt{spreadtab} turns tables in \LaTeX{} into Excel spreadsheet like tables in capability. I used this during my thesis to have a word count table for each chapter to best calculate the overall word count of the document without requiring an external file.
+The table was based on my word count table.
+
+\subsection{listings}
+I used \texttt{listings} for inputting code into the document, and you can do syntax-based formatting too.
+Examples of this can be found in this \href{https://www.overleaf.com/learn/latex/Code_listing}{post}.
+\lstinputlisting[language=Octave]{text/The Mainmatter/code_example.m}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Misc.}
+
+\subsection{pifont}
+\texttt{pifont} allows you to have more symbols in your work. I found the following useful \xmark{} (\verb|\xmark{}|) \cmark{} (\verb|\cmark{}|). These are user made commands which make use of \verb|\ding{51}| which is part of \texttt{pifont}. See \href{https://ctan.org/pkg/pifont?lang=en}{documentation} especially \say{Table 2} which has the list of symbols available via ding.
+
+\subsection{dirtytalk}
+Useful for when you want \say{nice} (\verb|\say{nice}|) quotations rather than "worse" (\verb|"worse"|) quotations. More of a personal preference. Note that it does not work in figure captions.
+
+\subsection{todonotes}
+\texttt{todonotes} is the nicest workaround for adding Word-like comments into your thesis\todo[color=yellow]{example} (\verb|\todo[color=yellow]{example}|) for a supervisor to read he may not be Overleaf savvy.
+An example is given above but read the \href{https://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf}{documentation} on the more variety of ways you can add them in.
+
+\subsection{lipsum}
+\texttt{lipsum} is great for making templates or filler text by generating random Latin text. 
+
+\subsection{Quality of Life Packages}
+Some of the packages added are for quality of life when using Overleaf/\LaTeX{}. A great example is \texttt{silence} which can turn off the \say{underfill} warnings which pop up. The warning about pages containing just floats (e.g. just figures and no text) has been turned off too.

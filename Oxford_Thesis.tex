@@ -7,7 +7,7 @@
 % Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
 % Modified by Sam Evans (sam@samuelevansresearch.org), 2007
 % Modified by John McManigle (john@oxfordechoes.com), 2015
-% Modified by Robin Scales (robin@scales.me), 2023
+% Modified by Robin Scales (robin@scales.me), 2023-2025
 % Modified by Qianyi Sun (inbox4sun@gmail.com), 2025
 %
 % This version Copyright (c) 2025 Qianyi Sun
@@ -48,9 +48,9 @@
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
-% Three options going on here; use in any combination.  But remember to turn the first two off before  generating a PDF to send to the printer!
+% Three options going on here; use in any combination.  But remember to turn the first two off before generating a PDF to send to the printer!
 
-% To include a Draft watermark, comment out the below.
+% To include a "Draft" watermark, comment below.
 % \backgroundsetup{contents={}} 
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
@@ -146,8 +146,8 @@
 \DeclareSIUnit{\wtpercent}{wt\%}
 
 
-\newcommand{\cmark}{\ding{51}} % RJS: I used this package to give me ticks and crosses for tables. http://ctan.org/pkg/pifont
-\newcommand{\xmark}{\ding{55}} %
+% \newcommand{\cmark}{\ding{51}} % RJS: I used this package to give me ticks and crosses for tables. http://ctan.org/pkg/pifont
+% \newcommand{\xmark}{\ding{55}} %
 
 %\WarningsOff[package] % QS: this silences warnings relating to a package. 
 \WarningsOff[package]
@@ -272,7 +272,9 @@
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 
 \include{text/The Mainmatter/ch-01-Introduction}
-\include{text/The Mainmatter/ch-00-Conclusions}
+%%% COMMENT OUT CHAPTERS TO NOT COMPILE THEM -> FASTER DRAFTING
+% \include{text/The Mainmatter/ch-00-Conclusions}
+\include{text/The Mainmatter/ch-02-Examples}
 
 %%%%% APPENDICES 
 

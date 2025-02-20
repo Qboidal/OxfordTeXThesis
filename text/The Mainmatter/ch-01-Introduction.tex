@@ -1,10 +1,11 @@
 \chapter{Introduction}
 \label{ch: Introduction}
 
-
+\adjustmtc
+\minitoc
 
 \section{A section}
-Here is an example of how a chapter page looks, without a minitoc. 
+Here is an example of how a chapter page looks, without a minitoc (aka \textbf{mini} \textbf{t}able \textbf{o}f \textbf{c}ontents). 
 
 \noindent This is a section.
 
@@ -15,7 +16,7 @@ This is a subsection.
 Corrections can be inserted as so. 
 \end{mccorrection}
 
-Shorter corrections can be inserted \mccorrect{like so}\todo{Comments can also be done \textit{like this}.}. 
+Shorter corrections can be inserted \mccorrect{like so}\todo[size=\tiny]{Comments can also be done \textit{like this}. The FONTSIZE can be changed.}. 
 
 \begin{figure}[!ht]
     \centering
@@ -23,3 +24,21 @@ Shorter corrections can be inserted \mccorrect{like so}\todo{Comments can also b
     \caption{This is a figure. Courtesy of Suzanne Lim (CC BY-NC-ND 4.0).}
     \label{fig:laser}
 \end{figure}
+
+\section{Why \LaTeX{}?}
+\subsection{Working At A Chapter At A Time}
+A \textcolor{blue}{\textbf{major}} benefit of \LaTeX{} over Word is that you can write chapters, sections, etc as separate files, and then \say{include} or \say{input} them into the document being compiled (\verb|\include{}| \& \verb|\input{}|).\\
+Unlike Word, you need to compile your document, which sounds daunting but as simple as the big green \say{Recompile} button or \say{ctr+s} on your keyboard.\\
+The main file of this document is \verb|Oxford_Thesis.tex|. Which has \verb|\include{}| commands in each of the chapters being displayed right now.
+If one wanted to not show a chapter in this final document, then all you have to do is comment it out with "\verb|%|".
+You can use \verb|\input{}| within chapters to insert section or subsection files etc.\\\\
+\textcolor{blue}{\textbf{Now}} you do not have to delete sections or chapters that you have previously written; rearranging chapters or sections is as simple as rearranging lines of code; you can compile the whole thesis as one final document less to worry with cross-referencing and citations.
+
+\subsection{Citations \& Reference Managers}
+Citations in \LaTeX{} do not slow down nearly as much as in Word in terms of adding and updating them. They are relatively easy to add with the \verb|\cite{}| command which quickly searches your reference file (in this case it's \verb|references.bib|), e.g., \verb|\cite{whitehead1927principia}| produces \cite{whitehead1927principia}.
+\textcolor{blue}{\textbf{Additionally}}, with premium Overleaf, you can synch your Zotero, Mendeley, etc reference manager to your document, making it very easy. \textcolor{blue}{\textbf{Otherwise}} you would need to export out and update your reference file manually.
+
+\subsection{Packages \& Commands}
+The \LaTeX{} community is vast, and so, many clever people have worked to develop packages that you can easily add and use into your own work, adding extra functionality and quality-of-life features.
+I (Robin) have written an extra chapter (\cref{ch: Examples}) just to highlight and give examples and usages of all of the useful packages and their commands that I used in my own thesis.\\
+It will additionally help you to understand how to write \LaTeX{} too by looking at generated content and relating that to the source-code \verb|ch-02-Examples.tex| file.

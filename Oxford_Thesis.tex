@@ -37,14 +37,14 @@
 % QS: Use this to have every page numbered.
 % CAMELGRAPH: The Part II requires all pages to besequentially numbered.
 
-% \geometry{total={170mm,257mm},
+% \geometry{,
 %  left=30mm,
 %  right=30mm,
 %  top=25mm,
 %  bottom=25mm, 
 %  includehead, includefoot,
 % heightrounded}
-% QS: Use this to have specific geometry if you want! LaTeX will likely tell you there is overspefication in both the 'h' and 'v' directions but don't worry, the above specification will win. 
+% QS: Use this to have specific geometry if you want!
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
@@ -145,6 +145,8 @@
 \DeclareSIUnit\mrad{mrad}
 \DeclareSIUnit{\wtpercent}{wt\%}
 
+\newcommand{\Romannumeral}[1]
+    {\MakeUppercase{\romannumeral #1}} %QS: a command that allows uppercase roman numerals using the primitive \romannumeral 
 
 % \newcommand{\cmark}{\ding{51}} % RJS: I used this package to give me ticks and crosses for tables. http://ctan.org/pkg/pifont
 % \newcommand{\xmark}{\ding{55}} %

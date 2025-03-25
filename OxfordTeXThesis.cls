@@ -81,10 +81,22 @@
 % Define text area of page and margin offsets
 %
 
+\RequirePackage{geometry} % QS: made this slightly clearer.
 \ifmc@nobind
-\RequirePackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\geometry{
+hmargin={3.1cm, 3.1cm}, 
+vmargin={2.5cm,2.7cm}, headsep=.8cm,
+footskip=1.2cm
+includehead,
+}
 \else
-\RequirePackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\geometry{
+hmargin={3.6cm, 2.6cm}, 
+vmargin={2.5cm,2.7cm}, 
+headsep=.8cm,
+footskip=1.2cm,
+includehead
+}
 \fi
 
 \RequirePackage{xcolor}
@@ -228,6 +240,7 @@
 \RequirePackage{lastpage} % Gives the number of pages.
 \RequirePackage{verbatim} % Allows commands to be displayed verbatim in TeX
 \RequirePackage{fancyvrb} % Makes the above look pretty. 
+\RequirePackage{tabularx} % For wrapping text in tabular environments.
 
 \RequirePackage[colorlinks=false,pdfpagelabels]{hyperref} 
 	% for linking between references, figures, TOC, etc in the pdf document, RJS: https://www.overleaf.com/learn/latex/Hyperlinks. % QS: many packages must come before hyperref https://latexguide.org/book-examples/hyperref/.
